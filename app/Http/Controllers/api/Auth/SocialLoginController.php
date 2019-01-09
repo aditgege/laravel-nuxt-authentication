@@ -31,7 +31,7 @@ class SocialLoginController extends Controller
         try {
             $serviceUser = Socialite::driver($service)->stateless()->user();
         } catch (InvalidStateException $e) {
-            return redirect(env('CLIENT_BASE_URL') . '?error=Unable to login using ' . $service . '.Please try again');
+            return redirect(env('CLIENT_BASE_URL') . '/auth/register?error=Unable to login using ' . $service . '.Please try again');
         }
 
         $email = $serviceUser->getEmail();
@@ -57,7 +57,7 @@ class SocialLoginController extends Controller
         }
 
         // log user in by id and redirect back to front-end
-        return redirect(env('CLIENT_BASE_URL') . '?token=' . $this->auth->fromUser($user));
+        return redirect(env('CLIENT_BASE_URL') . '/auth/social-callback?token=' . $this->auth->fromUser($user));
     }
 
     protected function needsToCreateSocial(User $user, $service)
