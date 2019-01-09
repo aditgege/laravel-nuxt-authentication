@@ -1,7 +1,13 @@
 <template>
     <div class="container">
-        <div class="col-md-6 offset-md-3">
-            <div class="card mt-4">
+        <div class="col-md-6 offset-md-3 mt-4">
+            <div v-if="error" class="alert alert-danger mb-2" role="alert">
+                {{error}}
+            </div>
+
+            <social-login />
+            
+            <div class="card">
                 <div class="card-header">
                     <p class="mb-0">Register</p>
                 </div>
@@ -39,15 +45,21 @@
 </template>
 
 <script>
+import SocialLogin from '@/components/SocialLogin';
+
 export default {
     middleware: 'guest',
+    components: {
+        SocialLogin
+    },
     data() {
         return {
             form: {
                 name: '',
                 email: '',
                 password: ''
-            }
+            },
+            error: this.$route.query.error
         }
     },
     methods: {

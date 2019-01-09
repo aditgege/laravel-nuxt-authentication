@@ -1,10 +1,14 @@
 <template>
     <div class="container">
-        <div class="col-md-6 offset-md-3">
-            <div class="card mt-4">
+        <div class="col-md-6 offset-md-3 mt-4">
+
+            <social-login />
+
+            <div class="card">
                 <div class="card-header">
                     <p class="mb-0">Login</p>
                 </div>
+
                 <div class="card-body">
                     <form @submit.prevent="login">
                         <div class="form-group">
@@ -32,8 +36,13 @@
 </template>
 
 <script>
+import SocialLogin from '@/components/SocialLogin';
+
 export default {
     middleware: 'guest',
+    components: {
+        SocialLogin
+    },
     data() {
         return {
             form: {

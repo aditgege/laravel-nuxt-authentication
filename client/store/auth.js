@@ -11,5 +11,5 @@ export const state = () => ({
     busy: false,
     loggedIn: false,
     strategy: "local",
-    user:false
+    user: false
 });
