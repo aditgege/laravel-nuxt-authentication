@@ -2,6 +2,10 @@
     <div class="container">
         <div class="col-md-6 offset-md-3 mt-4">
 
+            <div v-if="error" class="alert alert-danger mb-2" role="alert">
+                {{error}}
+            </div>
+
             <social-login />
 
             <div class="card">
@@ -48,7 +52,8 @@ export default {
             form: {
                 email: '',
                 password: ''
-            }
+            },
+            error: this.$route.query.error
         }
     },
     methods: {

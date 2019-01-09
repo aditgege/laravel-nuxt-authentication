@@ -40,7 +40,9 @@ class SocialLoginController extends Controller
         }
 
         $user = $this->getExistingUser($serviceUser, $email, $service);
+        $newUser = false;
         if (!$user) {
+            $newUser = true;
             $user = User::create([
                 'name' => $serviceUser->getName(),
                 'email' => $email,
@@ -57,7 +59,7 @@ class SocialLoginController extends Controller
         }
 
         // log user in by id and redirect back to front-end
-        return redirect(env('CLIENT_BASE_URL') . '/auth/social-callback?token=' . $this->auth->fromUser($user));
+        return redirect(env('CLIENT_BASE_URL') . '/auth/social-callback?token=' . $this->auth->fromUser($user) . '&origin=' . ($newUser ? 'register' : 'login'));
     }
 
     protected function needsToCreateSocial(User $user, $service)

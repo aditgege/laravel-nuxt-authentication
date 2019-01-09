@@ -1,12 +1,12 @@
 <template>
     <div class="social-login">
-        <button @click="socialLogin('google')" class="social-login-btn google" href="/login/facebook">
+        <button @click="socialLogin('google')" class="social-login-btn google">
             <i class="fab fa-google"></i>
         </button>
-        <button @click="socialLogin('github')" class="social-login-btn github" href="/login/facebook">
+        <button @click="socialLogin('github')" class="social-login-btn github">
             <i class="fab fa-github"></i>
         </button>
-        <button @click="socialLogin('facebook')" class="social-login-btn facebook" href="/login/facebook">
+        <button @click="socialLogin('facebook')" class="social-login-btn facebook">
             <i class="fab fa-facebook-f"></i>
         </button>
     </div>
